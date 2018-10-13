@@ -4,7 +4,7 @@
   "description": "Simple lightweight string padding and columns in Javascript",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "rm -rf build && tsc"
   },
   "repository": {
