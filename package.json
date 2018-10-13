@@ -1,0 +1,37 @@
+{
+  "name": "paddington",
+  "version": "0.0.1",
+  "description": "Simple lightweight string padding and columns in Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "rm -rf build && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomwwright/paddington.git"
+  },
+  "keywords": [
+    "strings",
+    "padding",
+    "columns",
+    "layouts"
+  ],
+  "author": "tomwwright",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomwwright/paddington/issues"
+  },
+  "homepage": "https://github.com/tomwwright/paddington#readme",
+  "dependencies": {
+    "strip-ansi": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.5",
+    "@types/node": "^10.11.7",
+    "@types/strip-ansi": "^3.0.0",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.1.3"
+  }
+}
