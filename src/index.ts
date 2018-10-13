@@ -1,9 +1,9 @@
 import strip from "strip-ansi";
 
-export type PaddingtonOptions = {
+export interface IPaddingtonOptions {
   truncateMarker?: string;
   padCharacter?: string;
-};
+}
 
 export class Paddington {
   private buffer: string = "";
@@ -11,13 +11,16 @@ export class Paddington {
   private truncateMarker = "...";
   private padCharacter = " ";
 
-  constructor(options: PaddingtonOptions = {}) {
+  constructor(options: IPaddingtonOptions = {}) {
     Object.assign(this, options);
   }
 
-  text = this.textLeft;
-  textLeft(string: string, width: number) {
-    const truncated = this.truncate(string, width);
+  public text(text: string, width: number) {
+    return this.textLeft(text, width);
+  }
+
+  public textLeft(text: string, width: number) {
+    const truncated = this.truncate(text, width);
 
     this.buffer += truncated;
     this.pad(Math.max(0, width - truncated.length));
@@ -25,8 +28,8 @@ export class Paddington {
     return this;
   }
 
-  textRight(string: string, width: number) {
-    const truncated = this.truncate(string, width);
+  public textRight(text: string, width: number) {
+    const truncated = this.truncate(text, width);
 
     this.pad(Math.max(0, width - truncated.length));
     this.buffer += truncated;
@@ -34,43 +37,45 @@ export class Paddington {
     return this;
   }
 
-  pad(width: number) {
+  public pad(width: number) {
     this.buffer += this.padding(width);
     return this;
   }
 
-  clear() {
+  public clear() {
     this.buffer = "";
 
     return this;
   }
 
-  toString() {
-    const string = this.buffer;
+  public toString() {
+    const text = this.buffer;
     this.buffer = "";
 
-    return string;
+    return text;
   }
 
-  print() {
-    console.log(this.buffer);
+  public print() {
+    console.log(this.buffer); // tslint:disable-line
 
     this.clear();
     return this;
   }
 
-  private truncate(string: string, maxWidth: number) {
-    const stripped = strip(string);
+  private truncate(text: string, maxWidth: number) {
+    const stripped = strip(text);
     if (stripped.length > maxWidth) {
       const truncated = stripped.substring(0, maxWidth - this.truncateMarker.length) + this.truncateMarker;
-      string = string.replace(stripped, truncated);
+      text = text.replace(stripped, truncated);
     }
-    return string;
+    return text;
   }
 
   private padding(width: number) {
     let pad = "";
-    for (let i = 0; i < width; ++i) pad += this.padCharacter;
+    for (let i = 0; i < width; ++i) {
+      pad += this.padCharacter;
+    }
     return pad;
   }
 }

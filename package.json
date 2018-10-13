@@ -2,10 +2,12 @@
   "name": "paddington",
   "version": "0.0.1",
   "description": "Simple lightweight string padding and columns in Javascript",
-  "main": "index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
-    "build": "rm -rf build && tsc"
+    "build": "rm -rf build && tsc",
+    "lint": "tslint -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -31,7 +33,10 @@
     "@types/node": "^10.11.7",
     "@types/strip-ansi": "^3.0.0",
     "jest": "^23.6.0",
+    "prettier": "^1.14.3",
     "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
     "typescript": "^3.1.3"
   }
 }
