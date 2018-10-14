@@ -1,6 +1,6 @@
 {
   "name": "paddington",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple lightweight string padding and columns in Javascript",
   "main": "build/index.js",
   "types": "build/index.d.ts",
