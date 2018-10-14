@@ -28,16 +28,27 @@ test("clear", () => {
   expect(paddington.toString()).toEqual("");
 });
 
-test("print", () => {
+test("newline", () => {
   const paddington = new Paddington();
 
-  const spy = jest.spyOn(console, "log");
+  paddington
+    .text("test1", 6)
+    .newline()
+    .text("test2", 6);
+
+  expect(paddington.toString()).toEqual("test1 \ntest2 ");
+});
+
+test("print", () => {
+  const mock = jest.fn();
+
+  const paddington = new Paddington({
+    printFunction: mock
+  });
 
   paddington.text("test", 8).print();
 
-  expect(spy).toHaveBeenCalledWith("test    ");
-
-  spy.mockRestore();
+  expect(mock).toHaveBeenCalledWith("test    ");
 });
 
 test("truncates", () => {

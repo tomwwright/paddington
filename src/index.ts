@@ -3,6 +3,7 @@ import strip from "strip-ansi";
 export interface IPaddingtonOptions {
   truncateMarker?: string;
   padCharacter?: string;
+  printFunction?: (text: string) => void;
 }
 
 export class Paddington {
@@ -10,6 +11,7 @@ export class Paddington {
 
   private truncateMarker = "...";
   private padCharacter = " ";
+  private printFunction = console.log; // tslint:disable-line
 
   constructor(options: IPaddingtonOptions = {}) {
     Object.assign(this, options);
@@ -42,6 +44,11 @@ export class Paddington {
     return this;
   }
 
+  public newline() {
+    this.buffer += "\n";
+    return this;
+  }
+
   public clear() {
     this.buffer = "";
 
@@ -56,7 +63,7 @@ export class Paddington {
   }
 
   public print() {
-    console.log(this.buffer); // tslint:disable-line
+    this.printFunction(this.buffer);
 
     this.clear();
     return this;
