@@ -10,6 +10,17 @@ test("pads right to the correct length", () => {
   expect(paddington.textRight("hello", 8).toString()).toEqual("   hello");
 });
 
+test("no truncate without length specified", () => {
+  const paddington = new Paddington();
+
+  expect(
+    paddington
+      .text("test1")
+      .text("test2")
+      .toString()
+  ).toEqual("test1test2");
+});
+
 test("chaining text", () => {
   const paddington = new Paddington();
   expect(

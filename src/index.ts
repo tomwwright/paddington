@@ -17,7 +17,7 @@ export class Paddington {
     Object.assign(this, options);
   }
 
-  public text(text: string, width: number) {
+  public text(text: string, width: number = text.length) {
     return this.textLeft(text, width);
   }
 
