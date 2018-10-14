@@ -79,7 +79,7 @@ const Paddington = require("paddington").Paddington
 // or
 import { Paddington } from "paddington";
 
-const Paddington = new Paddington({
+const paddington = new Paddington({
   truncateMarker: "(more)"      // default "..."
   padCharacter: "_"             // default " "
   printFunction: myCustomPrint  // default console.log
