@@ -56,10 +56,7 @@ export class Paddington {
   }
 
   public toString() {
-    const text = this.buffer;
-    this.buffer = "";
-
-    return text;
+    return this.buffer;
   }
 
   public print() {
