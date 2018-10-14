@@ -84,3 +84,17 @@ test("truncates Chalk strings", () => {
 
   expect(paddington.text(chalkedString, 12).toString()).toEqual(truncatedChalkedString);
 });
+
+test("pads Chalk strings", () => {
+  const paddington = new Paddington();
+
+  const chalkedString = "\u001b[32mchalk!\u001b[39m";
+  const padded = "\u001b[32mchalk!\u001b[39m  \u001b[32mchalk!\u001b[39m  ";
+
+  expect(
+    paddington
+      .text(chalkedString, 8)
+      .text(chalkedString, 8)
+      .toString()
+  ).toEqual(padded);
+});

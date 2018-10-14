@@ -22,18 +22,18 @@ export class Paddington {
   }
 
   public textLeft(text: string, width: number) {
-    const truncated = this.truncate(text, width);
+    const { truncated, truncatedLength } = this.truncate(text, width);
 
     this.buffer += truncated;
-    this.pad(Math.max(0, width - truncated.length));
+    this.pad(Math.max(0, width - truncatedLength));
 
     return this;
   }
 
   public textRight(text: string, width: number) {
-    const truncated = this.truncate(text, width);
+    const { truncated, truncatedLength } = this.truncate(text, width);
 
-    this.pad(Math.max(0, width - truncated.length));
+    this.pad(Math.max(0, width - truncatedLength));
     this.buffer += truncated;
 
     return this;
@@ -72,7 +72,10 @@ export class Paddington {
       const truncated = stripped.substring(0, maxWidth - this.truncateMarker.length) + this.truncateMarker;
       text = text.replace(stripped, truncated);
     }
-    return text;
+    return {
+      truncated: text,
+      truncatedLength: Math.min(maxWidth, stripped.length)
+    };
   }
 
   private padding(width: number) {
